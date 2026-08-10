@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+        
+        body {
+            padding-top: 80px;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            line-height: 1.7;
+            background-color: #f8f9ff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .navbar {
+            background: var(--gradient) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        /* Style pour les cartes de projet */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .project-card img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .card-title {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            color: white;
+        }
+        /* Style pour la photo de profil */
+        #about {
+            padding: 5rem 0;
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        #about img {
+            max-width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        #about img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MonPortfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#about">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cv-view">CV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="py-5 my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mb-5">
+                    <span class="text-primary fw-bold d-inline-block mb-2">À propos de moi</span>
+                    <h2 class="display-5 fw-bold">Développeur Web Passionné</h2>
+                    <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient); border-radius: 2px; margin: 1.5rem auto;"></div>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
+                    <div class="position-relative mx-auto" style="max-width: 350px;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-4" style="transform: rotate(3deg);"></div>
+                        <img src="ma_photo.jpg" alt="Photo de profil" class="position-relative w-100 h-auto rounded-4 shadow-lg" style="z-index: 1;" />
+                    </div>
+                </div>
+            <div class="col-lg-5 order-lg-1">
+                <div class="ps-lg-4">
+                    <p class="lead">Je suis un développeur web passionné, spécialisé en front-end avec <strong>HTML/CSS/JavaScript</strong> et <strong>Bootstrap</strong>, avec des bases solides en <strong>PHP/MySQL</strong> pour le développement de sites dynamiques et de boutiques en ligne.</p>
+                    <p class="mb-0">Au-delà du code, j'apporte une sensibilité créative (direction artistique, décoration, choix de palettes de couleurs) et un vrai sens du relationnel grâce à mon expérience en service client. Cette double casquette me permet de concevoir des sites non seulement fonctionnels et bien codés, mais aussi pensés pour l'expérience et la satisfaction de l'utilisateur.</p>
+                </div>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#contact" class="btn btn-primary px-4 py-2">
+                        <i class="fas fa-paper-plane me-2"></i> Me contacter
+                    </a>
+                    <a href="mon_cv.pdf" class="btn btn-outline-primary px-4 py-2" download>
+                        <i class="fas fa-download me-2"></i> Télécharger mon CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5 my-5">
+        <div class="container py-5 rounded-4" style="background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);">
+        <h2 class="text-center mb-4">Compétences Techniques</h2>
+        <div class="row text-center">
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fab fa-html5 fa-3x text-danger"></i>
+                <p class="mt-2 fw-bold">HTML5</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fab fa-css3-alt fa-3x text-primary"></i>
+                <p class="mt-2 fw-bold">CSS3</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fab fa-js fa-3x text-warning"></i>
+                <p class="mt-2 fw-bold">JavaScript</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fab fa-bootstrap fa-3x text-purple" style="color: #7952b3;"></i>
+                <p class="mt-2 fw-bold">Bootstrap 5</p>
+            </div>
+        </div>
+        
+        <h2 class="text-center mb-4 mt-5">Compétences Créatives</h2>
+        <div class="row text-center">
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fas fa-palette fa-3x" style="color: #e91e63;"></i>
+                <p class="mt-2 fw-bold">Décoration d'Événements</p>
+                <p class="small text-muted">Création d'ambiances uniques pour mariages, anniversaires et événements spéciaux</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fas fa-lightbulb fa-3x" style="color: #ffc107;"></i>
+                <p class="mt-2 fw-bold">Design d'Intérieur</p>
+                <p class="small text-muted">Aménagement et décoration d'espaces intérieurs</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fas fa-camera-retro fa-3x" style="color: #4caf50;"></i>
+                <p class="mt-2 fw-bold">Direction Artistique</p>
+                <p class="small text-muted">Conception visuelle et direction créative</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+                <i class="fas fa-swatchbook fa-3x" style="color: #2196f3;"></i>
+                <p class="mt-2 fw-bold">Sélection de Couleurs</p>
+                <p class="small text-muted">Harmonisation et choix de palettes de couleurs</p>
+            </div>
+        </div>
+        
+        <h2 class="text-center mb-4 mt-5">Compétences en SAV</h2>
+        <div class="row text-center">
+            <div class="col-6 col-md-4 mb-4">
+                <i class="fas fa-headset fa-3x" style="color: #9c27b0;"></i>
+                <p class="mt-2 fw-bold">Support Client</p>
+                <p class="small text-muted">Accompagnement et résolution des problèmes clients</p>
+            </div>
+            <div class="col-6 col-md-4 mb-4">
+                <i class="fas fa-tools fa-3x" style="color: #ff9800;"></i>
+                <p class="mt-2 fw-bold">Dépannage Technique</p>
+                <p class="small text-muted">Identification et résolution des dysfonctionnements</p>
+            </div>
+            <div class="col-6 col-md-4 mb-4">
+                <i class="fas fa-comments fa-3x" style="color: #4caf50;"></i>
+                <p class="mt-2 fw-bold">Relation Client</p>
+                <p class="small text-muted">Écoute active et communication claire</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container my-5 py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Mes Projets et Réalisations</h2>
+            <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient); border-radius: 2px;"></div>
+        </div>
+        <h2 class="mb-4">Mes Projets et Réalisations</h2>
+        <div class="row g-4">
+            
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 project-card shadow-sm">
+                    <a href="https://velmora.site.je" target="_blank">
+                        <img src="velmora-preview.jpg" class="card-img-top" alt="Projet VELMORA - Boutique Mode Premium" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">VELMORA</h5>
+                        <p class="card-text small">Boutique e-commerce premium de mode (vêtements, chaussures, accessoires) pour clientèle européenne/internationale. Développé en HTML/CSS/JS/PHP avec back-end MySQL, gestion des commandes et tableau de bord admin.</p>
+                        <a href="https://velmora.site.je" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-shopping-bag me-1"></i> Voir la boutique</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 project-card shadow-sm">
+                    <a href="https://spiffy-parfait-68fdd4.netlify.app/" target="_blank">
+                        <img src="monshop-preview.jpg" class="card-img-top" alt="Projet MonShop - Boutique Mode et Accessoires" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">MonShop</h5>
+                        <p class="card-text small">Boutique e-commerce de mode et accessoires avec catalogue par catégories (homme, femme, accessoires), système de promotions, panier et page produits. Design moderne et entièrement responsive.</p>
+                        <a href="https://spiffy-parfait-68fdd4.netlify.app/" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-shopping-bag me-1"></i> Voir la boutique</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 project-card shadow-sm">
+                    <a href="https://relaxed-lolly-2773ec.netlify.app/" target="_blank">
+                        <img src="agence-preview.jpg" class="card-img-top" alt="Projet Agence d'Événements" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Agence d'Événements</h5>
+                        <p class="card-text small">Landing page complète pour une agence. Utilisation de CSS avancé, Font Awesome et préparation pour l'intégration de paiement. Entièrement adaptatif.</p>
+                        <a href="https://relaxed-lolly-2773ec.netlify.app/" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye me-1"></i> Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 project-card shadow-sm">
+                     <a href="https://bright-sprite-145826.netlify.app/" target="_blank"> 
+                        <img src="e-commerce.png" class="card-img-top" alt="Projet E-Commerce" /> 
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Projet E-Commerce (Concept)</h5>
+                        <p class="card-text small">Maquette d'une interface de boutique en ligne. Accent mis sur le parcours client et le design des fiches produits.</p>
+                        <a href="https://bright-sprite-145826.netlify.app/" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt me-1"></i> Voir la Démo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 project-card shadow-sm">
+                    <img src="resto.png" class="card-img-top" alt="Site de Restaurant" style="height: 200px; object-fit: cover;"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Site Web de Restaurant</h5>
+                        <p class="card-text small">Site vitrine moderne pour un restaurant, mettant en valeur la cuisine et l'ambiance. Développé avec HTML, CSS et JavaScript.</p>
+                        <a href="https://magenta-empanada-1d1df5.netlify.app/" class="btn btn-sm btn-outline-primary" target="_blank"><i class="fas fa-external-link-alt me-1"></i> Voir le site</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card h-100 project-card shadow-sm">
+        <a href="https://graceful-mandazi-42f154.netlify.app/" target="_blank">
+            <img src="bank-app.png" class="card-img-top" alt="Application Bancaire en Ligne" style="height: 200px; object-fit: cover;"/>
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">Application Bancaire en Ligne</h5>
+            <p class="card-text small">Application complète de gestion bancaire en ligne avec système de prêts. Permet de gérer ses comptes, effectuer des virements et simuler des prêts. Développé avec des technologies modernes pour une expérience utilisateur fluide.</p>
+            <a href="https://graceful-mandazi-42f154.netlify.app/" class="btn btn-sm btn-outline-primary" target="_blank"><i class="fas fa-university me-1"></i> Voir l'application</a>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <section id="cv-view" class="container my-5">
+        <h2>Mon CV</h2>
+        <iframe src="mon_cv.pdf" width="100%" height="800px" class="shadow-lg rounded" style="border:none;"></iframe>
+    </section>
+
+    <section id="contact" class="container my-5 py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Contactez-moi</h2>
+                    <p class="lead">Vous avez un projet en tête ? Parlons-en !</p>
+                    <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient); border-radius: 2px;"></div>
+                </div>
+                <div class="card shadow-sm p-4">
+        <h2>Contactez-moi</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nom complet</label>
+                <input type="text" class="form-control" id="name" placeholder="Votre nom" required />
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Adresse email</label>
+                <input type="email" class="form-control" id="email" placeholder="Votre email" required />
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Votre message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane me-2"></i> Envoyer
+            </button>
+        </form>
+    </section>
+
+    <footer class="py-4" style="background: var(--dark-color); margin-top: 5rem;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <span class="text-white">&copy; 2025 MonPortfolio. Tous droits réservés.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Script pour ajouter un effet actif sur la navigation lors du scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const sections = document.querySelectorAll('section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 75; // 70px navbar + petit offset
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
