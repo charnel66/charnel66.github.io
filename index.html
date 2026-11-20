@@ -1,419 +1,348 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mon Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
-            --accent-color: #4cc9f0;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-        }
-        
-        body {
-            padding-top: 80px;
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-color);
-            line-height: 1.7;
-            background-color: #f8f9ff;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            color: var(--dark-color);
-        }
-        
-        .navbar {
-            background: var(--gradient) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 1rem 0;
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            margin: 0 0.5rem;
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-        /* Style pour les cartes de projet */
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-        }
-        
-        .project-card img {
-            height: 200px;
-            object-fit: cover;
-            width: 100%;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .card-title {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            border: none;
-            padding: 0.5rem 1.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--gradient);
-            border-color: transparent;
-            color: white;
-        }
-        /* Style pour la photo de profil */
-        #about {
-            padding: 5rem 0;
-            background: white;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        #about img {
-            max-width: 250px;
-            height: 250px;
-            margin: 0 auto;
-            display: block;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        #about img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio de Charnel Bassou, développeur web : sites vitrines, boutiques en ligne et solutions web adaptées aux entreprises.">
+  <meta name="theme-color" content="#101827">
+  <title>Charnel Bassou | Développeur Web</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #111c2e;
+      --surface-2: #17243a;
+      --text: #f4f7fb;
+      --muted: #a9b6c9;
+      --accent: #65d6c4;
+      --accent-2: #8ba7ff;
+      --line: rgba(255,255,255,.11);
+      --radius: 20px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg);
+      font-family: "DM Sans", sans-serif; line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20; background: rgba(11,18,32,.92);
+      backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font: 800 1.15rem Manrope, sans-serif; letter-spacing: .02em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .94rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .menu-button { display: none; border: 1px solid var(--line); background: var(--surface); color: var(--text); padding: 9px 12px; border-radius: 10px; }
+    .hero { padding: 94px 0 76px; }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 55px; }
+    .eyebrow { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .13em; font-size: .78rem; }
+    h1, h2, h3 { font-family: Manrope, sans-serif; line-height: 1.2; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); margin: 14px 0 20px; letter-spacing: -.045em; }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 660px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 19px; border-radius: 12px; font-weight: 700; transition: .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #07151a; background: var(--accent); }
+    .button-secondary { border: 1px solid var(--line); background: var(--surface); }
+    .hero-card { background: linear-gradient(145deg, #1b2b43, #111c2e); border: 1px solid var(--line); padding: 28px; border-radius: 28px; box-shadow: 0 25px 70px rgba(0,0,0,.25); }
+    .avatar { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 8%; border-radius: 20px; background: var(--surface-2); }
+    .hero-card-note { color: var(--muted); font-size: .9rem; margin: 17px 0 0; text-align: center; }
+    section { padding: 72px 0; }
+    .section-heading { max-width: 680px; margin-bottom: 32px; }
+    .section-heading h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin: 9px 0 12px; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .about-box, .contact-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+    .about-box p { color: var(--muted); margin: 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service, .skill, .project { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .service { padding: 24px; }
+    .service i { color: var(--accent); font-size: 1.6rem; }
+    .service h3 { margin: 15px 0 8px; font-size: 1.12rem; }
+    .service p, .project p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: 11px; }
+    .skill { padding: 10px 15px; color: #dce7f5; border-radius: 999px; font-size: .92rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .project img { width: 100%; height: 220px; object-fit: cover; background: var(--surface-2); }
+    .project-body { padding: 22px; }
+    .project h3 { margin: 0 0 9px; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 17px; color: var(--accent); font-weight: 700; font-size: .9rem; }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; }
+    .contact-info p { color: var(--muted); }
+    .contact-item { display: flex; gap: 12px; align-items: center; margin: 15px 0; }
+    .contact-item i { color: var(--accent); width: 22px; }
+    .contact-form label { display: block; margin: 12px 0 6px; font-weight: 600; }
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 13px 14px; color: var(--text); background: #0b1423;
+      border: 1px solid var(--line); border-radius: 10px; font: inherit;
+    }
+    .contact-form textarea { min-height: 125px; resize: vertical; }
+    .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid rgba(101,214,196,.35); border-color: var(--accent); }
+    .form-note { color: var(--muted); font-size: .82rem; }
+    footer { padding: 27px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
+    .socials { display: flex; gap: 17px; font-size: 1.2rem; }
+    .socials a:hover { color: var(--accent); }
+    .whatsapp-float { position: fixed; right: 19px; bottom: 19px; z-index: 30; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: white; font-size: 1.8rem; box-shadow: 0 8px 25px rgba(0,0,0,.3); }
+    @media (max-width: 760px) {
+      .hero { padding: 65px 0 45px; }
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-card { max-width: 330px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .menu-button { display: inline-block; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 18px 22px; background: #101a2a; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 14px; }
+      .nav-links.open { display: flex; }
+      section { padding: 55px 0; }
+      .about-box, .contact-box { padding: 22px; }
+    }
+  </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">MonPortfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#about">À propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cv-view">CV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <section id="about" class="py-5 my-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center mb-5">
-                    <span class="text-primary fw-bold d-inline-block mb-2">À propos de moi</span>
-                    <h2 class="display-5 fw-bold">Développeur Web Passionné</h2>
-                    <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient); border-radius: 2px; margin: 1.5rem auto;"></div>
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
-                    <div class="position-relative mx-auto" style="max-width: 350px;">
-                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary bg-opacity-10 rounded-4" style="transform: rotate(3deg);"></div>
-                        <img src="ma_photo.jpg" alt="Photo de profil" class="position-relative w-100 h-auto rounded-4 shadow-lg" style="z-index: 1;" />
-                    </div>
-                </div>
-            <div class="col-lg-5 order-lg-1">
-                <div class="ps-lg-4">
-                    <p class="lead">Je suis un développeur web passionné, spécialisé en front-end avec <strong>HTML/CSS/JavaScript</strong> et <strong>Bootstrap</strong>, avec des bases solides en <strong>PHP/MySQL</strong> pour le développement de sites dynamiques et de boutiques en ligne.</p>
-                    <p class="mb-0">Au-delà du code, j'apporte une sensibilité créative (direction artistique, décoration, choix de palettes de couleurs) et un vrai sens du relationnel grâce à mon expérience en service client. Cette double casquette me permet de concevoir des sites non seulement fonctionnels et bien codés, mais aussi pensés pour l'expérience et la satisfaction de l'utilisateur.</p>
-                </div>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="#contact" class="btn btn-primary px-4 py-2">
-                        <i class="fas fa-paper-plane me-2"></i> Me contacter
-                    </a>
-                    <a href="mon_cv.pdf" class="btn btn-outline-primary px-4 py-2" download>
-                        <i class="fas fa-download me-2"></i> Télécharger mon CV
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-5 my-5">
-        <div class="container py-5 rounded-4" style="background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);">
-        <h2 class="text-center mb-4">Compétences Techniques</h2>
-        <div class="row text-center">
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fab fa-html5 fa-3x text-danger"></i>
-                <p class="mt-2 fw-bold">HTML5</p>
-            </div>
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fab fa-css3-alt fa-3x text-primary"></i>
-                <p class="mt-2 fw-bold">CSS3</p>
-            </div>
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fab fa-js fa-3x text-warning"></i>
-                <p class="mt-2 fw-bold">JavaScript</p>
-            </div>
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fab fa-bootstrap fa-3x text-purple" style="color: #7952b3;"></i>
-                <p class="mt-2 fw-bold">Bootstrap 5</p>
-            </div>
-        </div>
-        
-        <h2 class="text-center mb-4 mt-5">Compétences Créatives</h2>
-        <div class="row text-center">
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fas fa-palette fa-3x" style="color: #e91e63;"></i>
-                <p class="mt-2 fw-bold">Décoration d'Événements</p>
-                <p class="small text-muted">Création d'ambiances uniques pour mariages, anniversaires et événements spéciaux</p>
-            </div>
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fas fa-lightbulb fa-3x" style="color: #ffc107;"></i>
-                <p class="mt-2 fw-bold">Design d'Intérieur</p>
-                <p class="small text-muted">Aménagement et décoration d'espaces intérieurs</p>
-            </div>
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fas fa-camera-retro fa-3x" style="color: #4caf50;"></i>
-                <p class="mt-2 fw-bold">Direction Artistique</p>
-                <p class="small text-muted">Conception visuelle et direction créative</p>
-            </div>
-            <div class="col-6 col-md-3 mb-3">
-                <i class="fas fa-swatchbook fa-3x" style="color: #2196f3;"></i>
-                <p class="mt-2 fw-bold">Sélection de Couleurs</p>
-                <p class="small text-muted">Harmonisation et choix de palettes de couleurs</p>
-            </div>
-        </div>
-        
-        <h2 class="text-center mb-4 mt-5">Compétences en SAV</h2>
-        <div class="row text-center">
-            <div class="col-6 col-md-4 mb-4">
-                <i class="fas fa-headset fa-3x" style="color: #9c27b0;"></i>
-                <p class="mt-2 fw-bold">Support Client</p>
-                <p class="small text-muted">Accompagnement et résolution des problèmes clients</p>
-            </div>
-            <div class="col-6 col-md-4 mb-4">
-                <i class="fas fa-tools fa-3x" style="color: #ff9800;"></i>
-                <p class="mt-2 fw-bold">Dépannage Technique</p>
-                <p class="small text-muted">Identification et résolution des dysfonctionnements</p>
-            </div>
-            <div class="col-6 col-md-4 mb-4">
-                <i class="fas fa-comments fa-3x" style="color: #4caf50;"></i>
-                <p class="mt-2 fw-bold">Relation Client</p>
-                <p class="small text-muted">Écoute active et communication claire</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="container my-5 py-5">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold mb-3">Mes Projets et Réalisations</h2>
-            <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient); border-radius: 2px;"></div>
-        </div>
-        <h2 class="mb-4">Mes Projets et Réalisations</h2>
-        <div class="row g-4">
-            
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 project-card shadow-sm">
-                    <a href="https://velmora.site.je" target="_blank">
-                        <img src="velmora-preview.jpg" class="card-img-top" alt="Projet VELMORA - Boutique Mode Premium" />
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">VELMORA</h5>
-                        <p class="card-text small">Boutique e-commerce premium de mode (vêtements, chaussures, accessoires) pour clientèle européenne/internationale. Développé en HTML/CSS/JS/PHP avec back-end MySQL, gestion des commandes et tableau de bord admin.</p>
-                        <a href="https://velmora.site.je" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-shopping-bag me-1"></i> Voir la boutique</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 project-card shadow-sm">
-                    <a href="https://spiffy-parfait-68fdd4.netlify.app/" target="_blank">
-                        <img src="monshop-preview.jpg" class="card-img-top" alt="Projet MonShop - Boutique Mode et Accessoires" />
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">MonShop</h5>
-                        <p class="card-text small">Boutique e-commerce de mode et accessoires avec catalogue par catégories (homme, femme, accessoires), système de promotions, panier et page produits. Design moderne et entièrement responsive.</p>
-                        <a href="https://spiffy-parfait-68fdd4.netlify.app/" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-shopping-bag me-1"></i> Voir la boutique</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 project-card shadow-sm">
-                    <a href="https://charno.free.nf/" target="_blank">
-                        <img src="agence-preview.jpg" class="card-img-top" alt="Projet Agence d'Événements" />
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Agence d'Événements</h5>
-                        <p class="card-text small">Landing page complète pour une agence. Utilisation de CSS avancé, Font Awesome et préparation pour l'intégration de paiement. Entièrement adaptatif.</p>
-                        <a href="https://charno.free.nf/" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye me-1"></i> Voir le site</a>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 project-card shadow-sm">
-                     <a href="https://bright-sprite-145826.netlify.app/" target="_blank"> 
-                        <img src="e-commerce.png" class="card-img-top" alt="Projet E-Commerce" /> 
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Projet E-Commerce (Concept)</h5>
-                        <p class="card-text small">Maquette d'une interface de boutique en ligne. Accent mis sur le parcours client et le design des fiches produits.</p>
-                        <a href="https://bright-sprite-145826.netlify.app/" target="_blank" class="btn btn-sm btn-outline-primary"><i class="fas fa-external-link-alt me-1"></i> Voir la Démo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 project-card shadow-sm">
-                    <img src="resto.png" class="card-img-top" alt="Site de Restaurant" style="height: 200px; object-fit: cover;"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Site Web de Restaurant</h5>
-                        <p class="card-text small">Site vitrine moderne pour un restaurant, mettant en valeur la cuisine et l'ambiance. Développé avec HTML, CSS et JavaScript.</p>
-                        <a href="https://magenta-empanada-1d1df5.netlify.app/" class="btn btn-sm btn-outline-primary" target="_blank"><i class="fas fa-external-link-alt me-1"></i> Voir le site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3">
-    <div class="card h-100 project-card shadow-sm">
-        <a href="https://graceful-mandazi-42f154.netlify.app/" target="_blank">
-            <img src="bank-app.png" class="card-img-top" alt="Application Bancaire en Ligne" style="height: 200px; object-fit: cover;"/>
-        </a>
-        <div class="card-body">
-            <h5 class="card-title">Application Bancaire en Ligne</h5>
-            <p class="card-text small">Application complète de gestion bancaire en ligne avec système de prêts. Permet de gérer ses comptes, effectuer des virements et simuler des prêts. Développé avec des technologies modernes pour une expérience utilisateur fluide.</p>
-            <a href="https://graceful-mandazi-42f154.netlify.app/" class="btn btn-sm btn-outline-primary" target="_blank"><i class="fas fa-university me-1"></i> Voir l'application</a>
-        </div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#accueil">CHAR​​NEL<span>.</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Ouvrir le menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+        <a href="#apropos">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#competences">Compétences</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-</div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Développeur web</div>
+          <h1>Je transforme vos idées en <span>solutions web.</span></h1>
+          <p>Je conçois des sites web modernes, responsive et faciles à utiliser : sites vitrines, pages de présentation et boutiques en ligne adaptées aux besoins des entreprises et entrepreneurs.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#contact"><i class="fa-regular fa-paper-plane"></i> Parler de votre projet</a>
+            <a class="button button-secondary" href="#projets"><i class="fa-solid fa-arrow-down"></i> Voir mes réalisations</a>
+          </div>
         </div>
-    </section>
-
-    <section id="cv-view" class="container my-5">
-        <h2>Mon CV</h2>
-        <iframe src="mon_cv.pdf" width="100%" height="800px" class="shadow-lg rounded" style="border:none;"></iframe>
-    </section>
-
-    <section id="contact" class="container my-5 py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="text-center mb-5">
-                    <h2 class="display-5 fw-bold mb-3">Contactez-moi</h2>
-                    <p class="lead">Vous avez un projet en tête ? Parlons-en !</p>
-                    <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient); border-radius: 2px;"></div>
-                </div>
-                <div class="card shadow-sm p-4">
-        <h2>Contactez-moi</h2>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Nom complet</label>
-                <input type="text" class="form-control" id="name" placeholder="Votre nom" required />
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Adresse email</label>
-                <input type="email" class="form-control" id="email" placeholder="Votre email" required />
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Votre message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-paper-plane me-2"></i> Envoyer
-            </button>
-        </form>
-    </section>
-
-    <footer class="py-4" style="background: var(--dark-color); margin-top: 5rem;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-white">&copy; 2025 MonPortfolio. Tous droits réservés.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
-                </div>
-            </div>
+        <div class="hero-card">
+          <img class="avatar" src="ma_photo.jpg" alt="Photo de Charnel" onerror="this.style.display='none'">
+          <p class="hero-card-note">Développement web · E-commerce · Expérience utilisateur</p>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Script pour ajouter un effet actif sur la navigation lors du scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            const sections = document.querySelectorAll('section');
+    <section id="apropos">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Qui suis-je ?</div>
+          <h2>À propos de moi</h2>
+          <p>Un développeur orienté vers les besoins concrets des utilisateurs et des entreprises.</p>
+        </div>
+        <div class="about-box">
+          <p>Je travaille avec HTML, CSS, JavaScript, Bootstrap, PHP et MySQL pour créer et améliorer des interfaces web. Je m'intéresse particulièrement aux sites vitrines et aux solutions e-commerce. Mon expérience en relation client m'aide également à écouter les besoins, expliquer les solutions et accompagner les utilisateurs. Je privilégie des interfaces claires, adaptées aux mobiles et pensées pour faciliter la prise de contact.</p>
+          <div class="actions">
+            <a class="button button-primary" href="mon_cv.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Consulter mon CV</a>
+            <a class="button button-secondary" href="https://github.com/Charnel66" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Mon GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 75; // 70px navbar + petit offset
-                    if (window.scrollY >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Ce que je peux faire</div>
+          <h2>Mes services</h2>
+          <p>Des prestations adaptées à votre activité et à votre budget. Chaque projet fait l'objet d'un échange préalable pour définir le besoin.</p>
+        </div>
+        <div class="grid-3">
+          <article class="service">
+            <i class="fa-solid fa-window-maximize"></i>
+            <h3>Site vitrine</h3>
+            <p>Présentez votre entreprise, vos services, vos coordonnées et vos réalisations dans un site professionnel adapté aux téléphones.</p>
+          </article>
+          <article class="service">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h3>Site e-commerce</h3>
+            <p>Présentez vos produits avec un catalogue organisé, des fiches produits et un parcours de commande adapté à votre activité.</p>
+          </article>
+          <article class="service">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h3>Correction et maintenance</h3>
+            <p>Correction de problèmes d'affichage, amélioration de pages existantes et ajout de fonctionnalités selon le projet.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
+    <section id="competences">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Outils et technologies</div>
+          <h2>Mes compétences</h2>
+          <p>Technologies et savoir-faire que je mobilise selon les besoins du projet.</p>
+        </div>
+        <div class="skills">
+          <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span>
+          <span class="skill">Bootstrap 5</span><span class="skill">PHP</span><span class="skill">MySQL</span>
+          <span class="skill">Responsive design</span><span class="skill">E-commerce</span>
+          <span class="skill">Relation client</span><span class="skill">Support utilisateur</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Quelques exemples</div>
+          <h2>Mes projets et réalisations</h2>
+          <p>Une sélection de projets et de démonstrations réalisés pour présenter mon travail.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <a href="https://velmora.site.je" target="_blank" rel="noopener"><img src="velmora-preview.jpg" alt="Aperçu du projet VELMORA" loading="lazy"></a>
+            <div class="project-body">
+              <h3>VELMORA</h3>
+              <p>Projet de boutique de mode en ligne avec catalogue de produits, catégories, panier et interface orientée commerce.</p>
+              <div class="project-links"><a href="https://velmora.site.je" target="_blank" rel="noopener">Voir le projet <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+            </div>
+          </article>
+          <article class="project">
+            <a href="https://spiffy-parfait-68fdd4.netlify.app/" target="_blank" rel="noopener"><img src="monshop-preview.jpg" alt="Aperçu de MonShop" loading="lazy"></a>
+            <div class="project-body">
+              <h3>MonShop</h3>
+              <p>Démonstration de boutique de mode et accessoires avec catégories, promotions, fiches produits et panier.</p>
+              <div class="project-links"><a href="https://spiffy-parfait-68fdd4.netlify.app/" target="_blank" rel="noopener">Voir la démonstration <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+            </div>
+          </article>
+          <article class="project">
+            <a href="https://relaxed-lolly-2773ec.netlify.app/" target="_blank" rel="noopener"><img src="agence-preview.jpg" alt="Aperçu du site d'agence événementielle" loading="lazy"></a>
+            <div class="project-body">
+              <h3>Agence événementielle</h3>
+              <p>Page de présentation pour une agence, avec mise en avant des prestations et une mise en page responsive.</p>
+              <div class="project-links"><a href="https://relaxed-lolly-2773ec.netlify.app/" target="_blank" rel="noopener">Voir le projet <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+            </div>
+          </article>
+          <article class="project">
+            <a href="https://bright-sprite-145826.netlify.app/" target="_blank" rel="noopener"><img src="e-commerce.png" alt="Aperçu d'une maquette e-commerce" loading="lazy"></a>
+            <div class="project-body">
+              <h3>Maquette e-commerce</h3>
+              <p>Concept d'interface de boutique en ligne axé sur le parcours client et la présentation des produits.</p>
+              <div class="project-links"><a href="https://bright-sprite-145826.netlify.app/" target="_blank" rel="noopener">Voir la démonstration <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+            </div>
+          </article>
+          <article class="project">
+            <a href="https://magenta-empanada-1d1df5.netlify.app/" target="_blank" rel="noopener"><img src="resto.png" alt="Aperçu du site de restaurant" loading="lazy"></a>
+            <div class="project-body">
+              <h3>Site de restaurant</h3>
+              <p>Site vitrine de démonstration pour présenter un restaurant, son univers et ses informations principales.</p>
+              <div class="project-links"><a href="https://magenta-empanada-1d1df5.netlify.app/" target="_blank" rel="noopener">Voir le projet <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+            </div>
+          </article>
+          <article class="project">
+            <a href="https://graceful-mandazi-42f154.netlify.app/" target="_blank" rel="noopener"><img src="bank-app.png" alt="Aperçu d'une maquette d'application bancaire" loading="lazy"></a>
+            <div class="project-body">
+              <h3>Interface bancaire — concept</h3>
+              <p>Maquette de démonstration d'une interface de gestion de compte et de simulation de prêt. Il ne s'agit pas d'un service bancaire réel.</p>
+              <div class="project-links"><a href="https://graceful-mandazi-42f154.netlify.app/" target="_blank" rel="noopener">Voir la démonstration <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Parlons de votre besoin</div>
+          <h2>Vous avez un projet ?</h2>
+          <p>Décrivez-moi votre besoin. Je vous répondrai pour échanger sur les possibilités et le budget.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-box contact-info">
+            <h3>Me contacter</h3>
+            <p>Le moyen le plus rapide pour me joindre est WhatsApp.</p>
+            <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp : +229 01 66 35 43 84</span></div>
+            <div class="contact-item"><i class="fa-brands fa-github"></i><a href="https://github.com/Charnel66" target="_blank" rel="noopener">github.com/Charnel66</a></div>
+            <a class="button button-primary" href="https://wa.me/2290166354384?text=Bonjour%20Charnel%2C%20je%20souhaite%20discuter%20d%E2%80%99un%20projet%20web." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Écrire sur WhatsApp</a>
+          </div>
+          <div class="contact-box">
+            <form class="contact-form" id="contactForm">
+              <label for="visitorName">Votre nom</label>
+              <input id="visitorName" name="name" autocomplete="name" required placeholder="Ex. : Nadia">
+              <label for="visitorEmail">Votre adresse e-mail (facultatif)</label>
+              <input id="visitorEmail" name="email" type="email" autocomplete="email" placeholder="Ex. : nom@email.com">
+              <label for="visitorMessage">Parlez-moi de votre projet</label>
+              <textarea id="visitorMessage" name="message" required placeholder="Quel type de site ou de service recherchez-vous ?"></textarea>
+              <button class="button button-primary" type="submit"><i class="fa-brands fa-whatsapp"></i> Envoyer via WhatsApp</button>
+              <p class="form-note">Ce formulaire prépare un message WhatsApp. Il n'envoie pas d'e-mail et ne stocke pas vos informations.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Charnel Bassou. Tous droits réservés.</span>
+      <div class="socials">
+        <a href="https://github.com/Charnel66" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://wa.me/2290166354384" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/2290166354384?text=Bonjour%2C%20je%20viens%20de%20visiter%20votre%20portfolio." target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('visitorName').value.trim();
+      const email = document.getElementById('visitorEmail').value.trim();
+      const message = document.getElementById('visitorMessage').value.trim();
+
+      if (!name || !message) return;
+
+      const text = `Bonjour Charnel,\n\nJe m'appelle ${name}.${email ? ` Mon e-mail : ${email}.` : ''}\n\nMon projet : ${message}`;
+      const url = `https://wa.me/2290166354384?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
 </body>
 </html>
